@@ -1,11 +1,11 @@
 ## 获取公钥 ：
 ```
 //全局配置 Git 的用户名和邮箱
-git config --global user.name "fengwenwei"
-git config --global user.email "fengwenwei@uniontech.com"
+git config --global user.name "f30040931"
+git config --global user.email "fengwenwei2@huawei.com"
 
 //生成 ssh key (一路回车确认不要设置密码)；
-ssh-keygen -t rsa -C "fengwenwei@uniontech.com"
+ssh-keygen -t rsa -C "fengwenwei2@huawei.com"
 
 //获取ssh key；
 cat ~/.ssh/id_rsa.pub 
