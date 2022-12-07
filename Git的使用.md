@@ -78,6 +78,7 @@ git pull <远程主机名> <远程分支名>:<本地分支名>
 // 使用rebase的模式进行合并
 git pull --rebase <远程主机名> <远程分支名>:<本地分支名>
 ```
+
 ### git fetch
 git fetch操作仅仅只会拉取远程的更改，不会自动进行 merge 操作。对你当前的代码没有影响
 ```
@@ -86,7 +87,12 @@ git fetch <远程主机名> <分支名>
 // 获取远程仓库所有分支的更新
 git fetch --all
 ```
-
+### git远端代码强制覆盖本地代码
+```
+git fetch --all
+git reset --hard origin/分支名称 
+git pull
+```
 
 ## stash : 能够将还未 commit 的代码存起来
 ```
