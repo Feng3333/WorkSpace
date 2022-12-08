@@ -131,12 +131,12 @@ $ git stash apply stash@{1}
 // 恢复最近一次 commit
 git reset --soft HEAD^
 
-//回复最近两次，三次 commit
+//恢复最近两次，三次 commit
 git reset --soft HEAD~2
 在 使用reset --soft 指定 commit 号时，会将该 commit 到最近一次 commit 的所有修改内容全部恢复，而不是只针对该 commit 
 ```
 
-## reset --hard
+## reset --hard 回滚到某个版本,及这个版本及之后的commit全部取消。
 ```
 // 回滚、取消之前的提交
 git reset --hard commit_id
