@@ -132,8 +132,14 @@ $ git stash apply stash@{1}
 git reset --soft HEAD^
 
 //回复最近两次，三次 commit
-git reset -- soft HEAD~2
+git reset --soft HEAD~2
 在 使用reset --soft 指定 commit 号时，会将该 commit 到最近一次 commit 的所有修改内容全部恢复，而不是只针对该 commit 
+```
+
+## reset --hard
+```
+// 回滚、取消之前的提交
+git reset --hard commit_id
 ```
 
 ## cherry-pick : 将已经提交的 commit，复制出新的 commit 应用到分支里
