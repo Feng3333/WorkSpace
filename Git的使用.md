@@ -16,8 +16,8 @@ cat ~/.ssh/id_rsa.pub
 ```
 git add 需要提交的文件路径
 git commit -m "说明"
-git commit --amend (编写标准)
-git push origin HEAD:refs/for/OpenHarmony-3.1-Beta（具体分支名字）
+git commit --amend (编写标准) // 写好后退出：ctrl+o  ctrl+x
+git push origin HEAD:（具体分支名字）
 ```
 
 ### add
