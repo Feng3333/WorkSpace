@@ -28,6 +28,17 @@ git add xxx
 // 添加当前更改的所有文件到暂存区。
 git add .
 ```
+
+### add回退
+将所有暂存区的文件撤回到工作区
+```
+git reset HEAD
+```
+将某个文件撤回到工作区
+```
+git reset HEAD <文件名>
+```
+
 ### commit
 ```
 // 提交暂存的更改，会新开编辑器进行编辑
@@ -41,6 +52,22 @@ git commit -am
 
 // 对最近一次的提交的信息进行修改,此操作会修改commit的hash值
 git commit --amend
+```
+
+### commit回退 
+撤销提交但仍然保留commit之前的修改（将暂存区最近一次提交到git目录的文件全部撤回到暂存区）
+```
+git reset --soft HEAD^
+```
+将 git commit 和 git add 一并撤回
+```
+git reset --mixed HEAD^
+//等同于该命令
+git reset --soft HEAD^ && git reset HEAD
+```
+不想保留最近一次提交的所有修改
+```
+git reset --hard HEAD^
 ```
 ### git branch
 ```
