@@ -12,6 +12,12 @@ cat ~/.ssh/id_rsa.pub
 ```
 
 ## 基本操作 ：
+### 使用 vscode 时 git pull 和 git push每次都需输入用户名和密码解决方法
+```
+git config --global credential.helper store
+```
+输入上述命令后重启vscode
+
 ### 提交代码到远程分支的基本步骤
 ```
 git add 需要提交的文件路径
