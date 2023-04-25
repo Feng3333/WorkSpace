@@ -75,6 +75,13 @@ git reset --soft HEAD^ && git reset HEAD
 ```
 git reset --hard HEAD^
 ```
+
+### git merge
+```
+// 将dev的分支合并到当前分支
+git merge dev
+```
+
 ### git branch
 ```
 // 新建本地分支，但不切换
