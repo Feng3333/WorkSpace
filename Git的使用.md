@@ -235,6 +235,11 @@ revert 合并提交后，再次合并分支会失效
 git reflog
 ```
 
+## 统计仓库代码量
+```
+git log --author="yourname" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %sn", add, subs, loc }' -
+```
+
 ## 设置git短命令 
 ```
 #方法一 
