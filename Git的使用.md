@@ -1,4 +1,34 @@
-## 获取公钥 ：
+# git的使用
+
+# 目录
+ - [获取公钥](#获取公钥)
+ - [基本操作](#基本操作)
+   - [使用vscode时git pull和git push每次都需输入用户名和密码解决方法](#使用-vscode-时-git-pull-和-git-push每次都需输入用户名和密码解决方法)
+   - [提交代码到远程分支的基本步骤](#提交代码到远程分支的基本步骤)
+   - [add](#add)
+   - [add回退](#add回退)
+   - [commit](#commit)
+   - [commit回退](#commit回退)
+   - [git merge](#git-merge)
+   - [git branch](#git-branch)
+   - [git checkout](#git-checkout)
+   - [git pull](#git-pull)
+   - [git fetch](#git-fetch)
+   - [git远端代码强制覆盖本地代码](#git远端代码强制覆盖本地代码)
+ - [stash : 能够将还未 commit 的代码存起来](#stash--能够将还未-commit-的代码存起来)
+ - [reset --soft : 回退你已提交的 commit，并将 commit 的修改内容放回到暂存区](#reset---soft--回退你已提交的-commit并将-commit-的修改内容放回到暂存区)
+ - [reset --hard 回滚到某个版本,及这个版本及之后的commit全部取消](#reset---hard-回滚到某个版本及这个版本及之后的commit全部取消)
+ - [cherry-pick : 将已经提交的 commit，复制出新的 commit 应用到分支里](#cherry-pick--将已经提交的-commit复制出新的-commit-应用到分支里)
+   - [应用场景](#应用场景)
+   - [命令使用](#命令使用)
+   - [cherry-pick代码冲突](#cherry-pick代码冲突)
+ - [revert : 将现有的提交还原，恢复提交的内容，并生成一条还原记录](#revert--将现有的提交还原恢复提交的内容并生成一条还原记录)
+ - [reflog : 记录了所有的 commit 操作记录，便于错误操作后找回记录](#reflog--记录了所有的-commit-操作记录便于错误操作后找回记录)
+ - [统计仓库代码量](#统计仓库代码量)
+ - [设置git短命令](#设置git短命令)
+ - [](#)
+
+## 获取公钥
 ```
 //全局配置 Git 的用户名和邮箱
 git config --global user.name "f30040931"
@@ -11,7 +41,7 @@ ssh-keygen -t rsa -C "fengwenwei2@huawei.com"
 cat ~/.ssh/id_rsa.pub 
 ```
 
-## 基本操作 ：
+## 基本操作
 ### 使用 vscode 时 git pull 和 git push每次都需输入用户名和密码解决方法
 ```
 git config --global credential.helper store
@@ -176,7 +206,7 @@ git reset --soft HEAD~2
 在 使用reset --soft 指定 commit 号时，会将该 commit 到最近一次 commit 的所有修改内容全部恢复，而不是只针对该 commit 
 ```
 
-## reset --hard 回滚到某个版本,及这个版本及之后的commit全部取消。
+## reset --hard 回滚到某个版本,及这个版本及之后的commit全部取消
 ```
 // 回滚、取消之前的提交
 git reset --hard commit_id
@@ -230,7 +260,7 @@ git revert -m 1 <commitHash>
 revert 合并提交后，再次合并分支会失效    
 使用 revert 后， feature 分支的 commit 还是会保留在 master 分支的记录中，当再次合并进去时，git 判断有相同的 commitHash，就忽略了相关 commit 修改的内容。 这时就需要 revert 掉之前 revert 的合并提交
 
-## reflog : 记录了所有的 commit 操作记录，便于错误操作后找回记录。
+## reflog : 记录了所有的 commit 操作记录，便于错误操作后找回记录
 ```
 git reflog
 ```
