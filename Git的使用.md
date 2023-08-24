@@ -12,6 +12,7 @@
    - [git merge](#git-merge)
    - [git branch](#git-branch)
    - [git checkout](#git-checkout)
+   - [git log](#git-log)
    - [git pull](#git-pull)
    - [git fetch](#git-fetch)
    - [git远端代码强制覆盖本地代码](#git远端代码强制覆盖本地代码)
@@ -24,6 +25,7 @@
    - [cherry-pick代码冲突](#cherry-pick代码冲突)
  - [revert : 将现有的提交还原，恢复提交的内容，并生成一条还原记录](#revert--将现有的提交还原恢复提交的内容并生成一条还原记录)
  - [reflog : 记录了所有的 commit 操作记录，便于错误操作后找回记录](#reflog--记录了所有的-commit-操作记录便于错误操作后找回记录)
+ - [git忽视文件](#git忽视文件)
  - [统计仓库代码量](#统计仓库代码量)
  - [设置git短命令](#设置git短命令)
  - [](#)
@@ -42,6 +44,23 @@ cat ~/.ssh/id_rsa.pub
 ```
 
 ## 基本操作
+### 使用方式
+```
+git gui    # 进入图形化界面
+git bash   # 命令行的方式
+```
+
+```
+# 初始化git仓库，会在当前目录生成一个隐藏文件夹 .git 该文件夹无需修改
+git init
+
+# 查看git的状态
+git status
+
+# 查看提交log
+git log
+```
+
 ### 使用 vscode 时 git pull 和 git push每次都需输入用户名和密码解决方法
 ```
 git config --global credential.helper store
@@ -58,11 +77,16 @@ git push origin HEAD:（具体分支名字）
 
 ### add
 ```
-// 添加某个文件到暂存区，后面可以跟多个文件，以空格区分
+# 添加某个文件到暂存区，后面可以跟多个文件，以空格区分
 git add xxx
 
-// 添加当前更改的所有文件到暂存区。
+# 添加当前更改的所有文件到暂存区。
 git add .
+git add --all
+git add -A
+
+# 添加当前目录下的所有后缀为 .py的文件
+git add *.py
 ```
 
 ### add回退
@@ -134,12 +158,25 @@ git branch -m <old-branch-name> <new-branch-name>
 ```
 ### git checkout
 ```
-//切换分支
+# 切换分支
 git checkout origin/分支名
 
-//切换分支并在本地重命名
+# 切换分支并在本地重命名
 git checkout -b 本地分支名 origin/远程分支名。
 ```
+将暂存区的内容恢复到工作区
+```
+git checkout 1.txt(filename)
+```
+
+### git log
+查看提交日志
+```
+git log            # 查看当前head以及以前的日志
+git log --oneline  # 简洁的日志信息
+git reflog         # 查看所有的提交变更日志
+```
+
 ### git pull
 ```
 // 从远程仓库拉取代码并合并到本地，可简写为 git pull 等同于 git fetch && git merge 
@@ -198,19 +235,26 @@ $ git stash apply stash@{1}
 
 ## reset --soft : 回退你已提交的 commit，并将 commit 的修改内容放回到暂存区
 ```
-// 恢复最近一次 commit
+# 恢复最近一次 commit
 git reset --soft HEAD^
 
-//恢复最近两次，三次 commit
+# 恢复最近两次，三次 commit
 git reset --soft HEAD~2
 在 使用reset --soft 指定 commit 号时，会将该 commit 到最近一次 commit 的所有修改内容全部恢复，而不是只针对该 commit 
 ```
 
 ## reset --hard 回滚到某个版本,及这个版本及之后的commit全部取消
 ```
-// 回滚、取消之前的提交
+# 回滚、取消之前的提交
 git reset --hard commit_id
 ```
+```
+git reset --hard HEAD~1
+# ~1:上一次提交
+# ~2:上上次提交
+# ~0:当前提交
+```
+
 
 ## cherry-pick : 将已经提交的 commit，复制出新的 commit 应用到分支里
 ### 应用场景
@@ -264,6 +308,27 @@ revert 合并提交后，再次合并分支会失效
 ```
 git reflog
 ```
+
+## git忽视文件
+- 在仓库的根目录创建一个 ```.gitignore``` 的文件，文件名是固定的
+- 可以将不需要被git管理的文件路径添加到```.gitignore```中
+```
+# 忽视 .gitignore 文件
+.gitignore
+
+# 忽视 css/index.js 下的 index.js 文件
+css/index.js
+
+# 忽视 css 目录下的所有 .js 文件
+css/*.js
+
+# 忽视 css 目录下的所有文件
+css/*.*
+
+# 忽视 filedir 文件夹
+filedir
+```
+
 
 ## 统计仓库代码量
 ```
